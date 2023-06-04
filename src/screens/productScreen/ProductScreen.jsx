@@ -3,18 +3,22 @@
 import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import {Tabs,Tab} from 'react-bootstrap'
+import { useParams } from 'react-router-dom';
 //import ReactImageMagnify from 'react-image-magnify';
 import './productScreen.css'
 
-const ProductScreen = ({match}) => {
+const ProductScreen = () => {
     const [data, setdata] = useState([])
 
     const [image, setimage] = useState()
 
+    const params = useParams();
+    const { id } = params;
+
      const container = useRef(null)
 
     const getData = async () => {
-         const {data} = await axios.get(`'https://sotico-group-back-production.up.railway.app/api/products/${match.params.id}`)
+         const {data} = await axios.get(`https://sotico-group-back-production.up.railway.app/api/products/${id}`)
 
          setdata(data)
     }
@@ -22,7 +26,7 @@ const ProductScreen = ({match}) => {
     useEffect(() => {
        getData()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [match])
+    }, [id])
 
 
   return (
@@ -44,7 +48,7 @@ const ProductScreen = ({match}) => {
                                                     height: 1800,           
                                                 }
                                             }} />  */}
-            <img src={image || data.image && data.image[0]} width={1200} height={1800} />
+            <img src={image || data.image && data.image[0]} width={500} height={500} />
             </div>
             <div className="product_text">
                <h2>{data.name}</h2> 

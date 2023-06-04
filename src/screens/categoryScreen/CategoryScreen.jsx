@@ -5,13 +5,10 @@ import SingleProduct from '../../components/menu_products/SingleProduct.jsx'
 import './category.css'
 
 import Menu from '../../components/Menu.jsx'
-
+import { useParams } from 'react-router-dom';
 //import styled, { keyframes } from 'styled-components'
 
-
-
-
-const CategoryScreen = ({match}) => { 
+const CategoryScreen = () => { 
 
     const [datas, setdata] = useState([])
     const [children, setChildren] =  useState([])
@@ -20,6 +17,9 @@ const CategoryScreen = ({match}) => {
     const [active, setactive] = useState('active1') 
     const [active1, setactive1] = useState('')
     const [sorted, setSorted] = useState('');
+
+    const params = useParams();
+    const { id } = params;
 
     const sortArray = [{ id: 0, name: "nouveaux" }, { id: 1, name: "Nom, A à Z" }, { id: 2, name: "Nom, Z à A" } ]
 
@@ -45,42 +45,42 @@ const CategoryScreen = ({match}) => {
 
        setdata(data.products) 
 
-        const product = data.products.find(el => el._id === match.params.id)
+        const product = data.products.find(el => el._id === id)
 
         
-    const anime = keyframes`
-     0%
-    {
-        opacity: 0;
-        transform: scale(0) translateY(1000px);
-    }
-    50%
-    {
-        opacity: 1;
-        background-position: center;
-        background-attachment: fixed;
-    }
-    100%
-    {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-        background: url(${product && product.image[0] });
-        background-position: center;
-        background-attachment: fixed;
+//     const anime = keyframes`
+//      0%
+//     {
+//         opacity: 0;
+//         transform: scale(0) translateY(1000px);
+//     }
+//     50%
+//     {
+//         opacity: 1;
+//         background-position: center;
+//         background-attachment: fixed;
+//     }
+//     100%
+//     {
+//         opacity: 1;
+//         transform: scale(1) translateY(0);
+//         background: url(${product && product.image[0] });
+//         background-position: center;
+//         background-attachment: fixed;
          
-    }
-`;
+//     }
+// `;
 
-        const Mehdi = styled.div 
-        `
-            position: relative;
-            display: block;
-            width: 20%;
-            height: 7vh;
-            animation: ${anime} 1s ease-in-out forwards;
-            background-size: cover;
-            background-repeat: no-repeat;
-        `
+//         const Mehdi = styled.div 
+//         `
+//             position: relative;
+//             display: block;
+//             width: 20%;
+//             height: 7vh;
+//             animation: ${anime} 1s ease-in-out forwards;
+//             background-size: cover;
+//             background-repeat: no-repeat;
+//         `
 
          
 
@@ -101,7 +101,7 @@ const CategoryScreen = ({match}) => {
       
       setitems(item)
 
-       child = data.products.filter(el => el.parentId === match.params.id)
+       child = data.products.filter(el => el.parentId === id)
     
     setChildren(child)
 
@@ -113,9 +113,9 @@ const CategoryScreen = ({match}) => {
     getData()
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [ match.params.id])
+    }, [ id])
 
-    const categoryName = datas.find(el => el._id === match.params.id )
+    const categoryName = datas.find(el => el._id === id )
         
     
   return (
@@ -197,7 +197,4 @@ const CategoryScreen = ({match}) => {
     )
   
 }
-
-  
-
 export default CategoryScreen
