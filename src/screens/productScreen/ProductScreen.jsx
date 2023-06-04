@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import axios from 'axios'
 import {Tabs,Tab} from 'react-bootstrap'
-import ReactImageMagnify from 'react-image-magnify';
+//import ReactImageMagnify from 'react-image-magnify';
 import './productScreen.css'
 
 
@@ -32,7 +32,7 @@ const ProductScreen = ({match}) => {
        <div className="container  ">
     <div className="product_description_deatils" ref={container}> 
             <div className="image_container_pos"  >
-               <ReactImageMagnify {...{
+               {/* <ReactImageMagnify {...{
                                                 smallImage: {
                                                     alt: 'data.name',
                                                     isFluidWidth: true,
@@ -44,12 +44,9 @@ const ProductScreen = ({match}) => {
                                                     width: 1200,
                                                     height: 1800,           
                                                 }
-                                            }} /> 
+                                            }} />  */}
+            <img src={image || data.image && data.image[0]} width={1200} height={1800} />
             </div>
-
-                            
-
-
             <div className="product_text">
                <h2>{data.name}</h2> 
 
