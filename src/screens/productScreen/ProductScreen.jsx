@@ -14,7 +14,7 @@ const ProductScreen = ({match}) => {
      const container = useRef(null)
 
     const getData = async () => {
-         const {data} = await axios.get(`/api/products/${match.params.id}`)
+         const {data} = await axios.get(`'https://sotico-group-back-production.up.railway.app/api/products/${match.params.id}`)
 
          setdata(data)
     }

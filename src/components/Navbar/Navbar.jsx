@@ -26,7 +26,7 @@ const Navbar = () => {
   window.addEventListener('scroll', changeBackground)
 
   const getData = async () => {
-    const { data } = await axios.get('/api/products')
+    const { data } = await axios.get('https://sotico-group-back-production.up.railway.app/api/products')
 
     setdata(data.products.filter(el => !el.parentId))
   }

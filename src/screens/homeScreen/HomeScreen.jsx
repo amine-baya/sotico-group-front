@@ -16,7 +16,7 @@ const HomeScreen = () => {
   const [send,setSend]= useState(false)
 
   const getData = async () => {
-      const {data} = await axios.get('/api/products ')
+      const {data} = await axios.get('https://sotico-group-back-production.up.railway.app/api/products')
 
       setdata(data.products.filter(el => !el.parentId)) 
     }
@@ -79,7 +79,7 @@ const HomeScreen = () => {
       }
 
     
-       axios.post('/api/forma',data).then(res=>{
+       axios.post('https://sotico-group-back-production.up.railway.app/api/forma',data).then(res=>{
          setSend(true)
          resetForm()
       }).catch(()=>{
@@ -190,9 +190,8 @@ const HomeScreen = () => {
 
         
    <div style={{ height: '40vh', width: '100%', marginTop:'10px' }}>
-        <GoogleMapReact
-          // bootstrapURLKeys={{key: process.env.MAP_KEY}   } 
-          bootstrapURLKeys={{key: 'process.env.MAP_KEY'}   } 
+        <GoogleMapReact 
+          bootstrapURLKeys={{key: 'AIzaSyBlfbJQ0lozfM-KvDGX1W00PYexmfqIhWs'}   } 
           defaultCenter={defaultProps.center} 
           defaultZoom={defaultProps.zoom}
           yesIWantToUseGoogleMapApiInternals={true} 

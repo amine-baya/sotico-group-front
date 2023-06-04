@@ -2,6 +2,7 @@
   "name": "sotico-front",
   "private": true,
   "version": "0.0.0",
+  "proxy": "sotico-group-back-production.up.railway.app",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -30,7 +30,7 @@ const SearchScreen = ({match}) => {
     const keyword = match.params.keyword
 
     const getData = async () =>{
-        const {data} = await axios.get(`/api/products/search?keyword=${keyword}`) 
+        const {data} = await axios.get(`https://sotico-group-back-production.up.railway.app/api/products/search?keyword=${keyword}`) 
         const filterData = await data.filter(el => el.type !== 'category')
         setdata(filterData)
 
