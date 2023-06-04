@@ -6,7 +6,6 @@ import {Tabs,Tab} from 'react-bootstrap'
 //import ReactImageMagnify from 'react-image-magnify';
 import './productScreen.css'
 
-
 const ProductScreen = ({match}) => {
     const [data, setdata] = useState([])
 
